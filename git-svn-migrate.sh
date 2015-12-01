@@ -76,7 +76,6 @@ NAME
 \n
 \nSEE ALSO
 \n\tfetch-svn-authors.sh
-\n\tsvn-lookup-author.sh
 EOF_HELP
 );
 
@@ -199,7 +198,7 @@ do
   # Clone the original Subversion repository to a temp repository.
   cd $pwd;
   echo "- Cloning repository..." >&2;
-  git svn clone $url -A $authors_file --authors-prog=$dir/svn-lookup-author.sh --stdlayout --quiet $gitsvn_params $tmp_destination;
+  git svn clone $url -A $authors_file --stdlayout --quiet $gitsvn_params $tmp_destination;
 
   # Create .gitignore file.
   echo "- Converting svn:ignore properties into a .gitignore file..." >&2;
