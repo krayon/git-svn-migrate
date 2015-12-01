@@ -3,6 +3,8 @@
 # Copyright 2010-2011 John Albin Wilkins and contributors.
 # Available under the GPL v2 license. See LICENSE.txt.
 
+# Originally based on: https://github.com/JohnAlbin/git-svn-migrate
+
 script=`basename $0`;
 dir=`pwd`/`dirname $0`;
 usage=$(cat <<EOF_USAGE
@@ -198,7 +200,7 @@ do
   # Clone the original Subversion repository to a temp repository.
   cd $pwd;
   echo "- Cloning repository..." >&2;
-  git svn clone $url -A $authors_file --stdlayout --quiet $gitsvn_params $tmp_destination;
+  git svn clone $url -A $authors_file --stdlayout --no-metadata --quiet $gitsvn_params $tmp_destination;
 
   # Create .gitignore file.
   echo "- Converting svn:ignore properties into a .gitignore file..." >&2;
