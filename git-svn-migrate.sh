@@ -178,6 +178,9 @@ if [[ -e $tmp_destination ]]; then
 fi
 while read line
 do
+  # Ignore blank lines
+  [ -z "${line}" ] && continue
+
   # Check for 2-field format:  Name [tab] URL
   name=`echo $line | awk '{print $1}'`;
   url=`echo $line | awk '{print $2}'`;
